@@ -2,10 +2,9 @@ const moment = require("moment");
 const database = require('../helper/db.js');
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const user = database.users;
-const admin = database.admin;
-const food = database.food;
-const orders = database.orders;
+// const user = database.users;
+// const admin = database.admin;
+const orders = database.order;
 const bcrypt = require("bcrypt");
 const mailTransport = nodemailer.createTransport({
 	"service" : "gmail",
@@ -20,9 +19,18 @@ module.exports = {
 }
 
 //Order
-async function order(req,res){
+async function order(req,callback){
+	
+	// const obj = JSON.parse(JSON.stringify(req));
 
+	// console.log("req",obj)
+	let cartOrder = new orders(req);
+	
+	await cartOrder.save().then((data)=>{
+		callback(data);
+	})
 }
+
 
 	//mail function
 	function sendMail(details){

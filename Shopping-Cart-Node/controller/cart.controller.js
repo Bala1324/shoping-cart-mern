@@ -3,7 +3,7 @@ const router = express.Router();
 const cartService = require("./cart.service.js"); 
 
 // router
-router.post("/order",order)
+router.post("/orders",order)
 
 module.exports = router;
 

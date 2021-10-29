@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path = "/cart" component = {Provider}/>
+        <Route exact path = "/" component = {Provider}/>
         {/* <Route exact path = "/payment" component = {()=> <Payment authorized = {false}/>}/> */}
         <Route exact path = "/payment" component = {Payment}/>
      </Switch>

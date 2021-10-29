@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-// app.use("/cart", require("./controller/cart.controller"))
+app.use("/order", require("./controller/cart.controller"))
 app.use("/admin", require("./controller/admin.controller"))
 
 

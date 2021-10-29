@@ -1,10 +1,26 @@
 import React from 'react';
 import { useCart } from 'react-use-cart';
 import { useHistory } from 'react-router-dom';
+import Axios from 'axios'
 
 const Card = () => {
     let history = useHistory();
 
+    const postData = () => {
+        let cartData =  JSON.parse(localStorage.getItem('react-use-cart'))
+        let type = typeof cartData;
+        console.log(type)
+        Axios({
+          method: "POST",
+        //   withCredentials: true,
+          url: "http://localhost:5000/order/orders",
+          data: cartData
+        }).then((res) => {
+        //   setData(res.data);
+          console.log(res.data);
+        });
+      };
+    
     const {
         isEmpty,
         totalUniqueItems,
@@ -66,7 +82,7 @@ const Card = () => {
                       <button className ="btn btn-danger m-2"
                       onClick = {() => emptyCart()}
                       >Clear Cart</button>
-                      <button  className= "btn btn-primary m-2" onClick = {() =>{history.push('/payment')}}>Buy Now</button>
+                      <button  className= "btn btn-primary m-2" onClick ={postData}>Buy Now</button>
 
 
                   </div>
